@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Primary — warm charcoal */
+  --color-primary-50: #f7f5f3;
+  --color-primary-100: #edeae6;
+  --color-primary-200: #d9d3cc;
+  --color-primary-300: #c0b7ab;
+  --color-primary-400: #a39888;
+  --color-primary-500: #8d7f6e;
+  --color-primary-600: #756758;
+  --color-primary-700: #5c5047;
+  --color-primary-800: #453c34;
+  --color-primary-900: #2c2420;
+  --color-primary-950: #1a1512;
+
+  /* Teal */
+  --color-teal-50: #f0f9f6;
+  --color-teal-100: #d4ede5;
+  --color-teal-200: #a9dbcb;
+  --color-teal-300: #75c4ac;
+  --color-teal-400: #4aaa8d;
+  --color-teal-500: #2d8f73;
+  --color-teal-600: #1f745c;
+  --color-teal-700: #1a5f4c;
+  --color-teal-800: #164d3e;
+  --color-teal-900: #123f33;
+  --color-teal-950: #0a2922;
+
+  /* Gold */
+  --color-gold-50: #fdfaf1;
+  --color-gold-100: #f9f0d5;
+  --color-gold-200: #f2dea8;
+  --color-gold-300: #e9c873;
+  --color-gold-400: #dfae42;
+  --color-gold-500: #c4923a;
+  --color-gold-600: #a87530;
+  --color-gold-700: #8a5a28;
+  --color-gold-800: #6e4522;
+  --color-gold-900: #5a381d;
+
+  /* Fonts */
+  --font-heading: "Libre Baskerville", Georgia, serif;
+  --font-body: Montserrat, system-ui, sans-serif;
+
+  /* Base font size — 18px for readability */
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.75;
+}

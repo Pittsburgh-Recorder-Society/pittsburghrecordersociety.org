@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NextMeeting from '../components/NextMeeting.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { url } from '../utils/url';
+import { getCollection } from 'astro:content';
+
+const blogPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <!-- Hero -->
+  <section class="relative bg-primary-900 text-white overflow-hidden">
+    <!-- Pittsburgh bridge + river silhouette -->
+    <div class="absolute inset-x-0 bottom-0 opacity-[0.08]" aria-hidden="true">
+      <svg class="w-full h-auto" viewBox="0 0 1200 200" fill="none" preserveAspectRatio="xMidYMax slice">
+        <!-- Three bridges spanning the rivers -->
+        <!-- Left bridge (smaller) -->
+        <path d="M0 160 Q75 100 150 100 Q225 100 300 160" stroke="#c4923a" stroke-width="3" />
+        <line x1="0" y1="160" x2="300" y2="160" stroke="#c4923a" stroke-width="3" />
+        <line x1="60" y1="135" x2="60" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <line x1="120" y1="115" x2="120" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <line x1="180" y1="115" x2="180" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <line x1="240" y1="135" x2="240" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <!-- Center bridge (larger, prominent) -->
+        <path d="M350 160 Q500 60 600 60 Q700 60 850 160" stroke="#c4923a" stroke-width="4" />
+        <line x1="350" y1="160" x2="850" y2="160" stroke="#c4923a" stroke-width="4" />
+        <line x1="430" y1="130" x2="430" y2="160" stroke="#c4923a" stroke-width="2" />
+        <line x1="510" y1="100" x2="510" y2="160" stroke="#c4923a" stroke-width="2" />
+        <line x1="600" y1="80" x2="600" y2="160" stroke="#c4923a" stroke-width="2" />
+        <line x1="690" y1="100" x2="690" y2="160" stroke="#c4923a" stroke-width="2" />
+        <line x1="770" y1="130" x2="770" y2="160" stroke="#c4923a" stroke-width="2" />
+        <!-- Right bridge (smaller) -->
+        <path d="M900 160 Q975 100 1050 100 Q1125 100 1200 160" stroke="#c4923a" stroke-width="3" />
+        <line x1="900" y1="160" x2="1200" y2="160" stroke="#c4923a" stroke-width="3" />
+        <line x1="960" y1="135" x2="960" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <line x1="1050" y1="115" x2="1050" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <line x1="1140" y1="135" x2="1140" y2="160" stroke="#c4923a" stroke-width="1.5" />
+        <!-- River waves -->
+        <path d="M0 180 Q50 174 100 180 Q150 186 200 180 Q250 174 300 180 Q350 186 400 180 Q450 174 500 180 Q550 186 600 180 Q650 174 700 180 Q750 186 800 180 Q850 174 900 180 Q950 186 1000 180 Q1050 174 1100 180 Q1150 186 1200 180" stroke="#c4923a" stroke-width="2" />
+        <path d="M0 192 Q50 186 100 192 Q150 198 200 192 Q250 186 300 192 Q350 198 400 192 Q450 186 500 192 Q550 198 600 192 Q650 186 700 192 Q750 198 800 192 Q850 186 900 192 Q950 198 1000 192 Q1050 186 1100 192 Q1150 198 1200 192" stroke="#c4923a" stroke-width="1.5" opacity="0.6" />
+      </svg>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 py-20 md:py-28 text-center">
+      <p class="font-heading text-gold-400 text-sm md:text-base tracking-[0.2em] uppercase mb-4">Est. 1960s &middot; A Chapter of the American Recorder Society</p>
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
+        Pittsburgh<br />Recorder Society
+      </h1>
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <span class="h-px w-12 bg-gold-500"></span>
+        <p class="font-heading text-xl md:text-2xl text-gold-300 italic">
+          "Pastime with good company"
+        </p>
+        <span class="h-px w-12 bg-gold-500"></span>
+      </div>
+      <p class="text-lg text-primary-200 max-w-2xl mx-auto leading-relaxed">
+        A welcoming community of recorder players in the Pittsburgh area.
+        Join us for monthly meetings, workshops, and the joy of making music together.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={url('/meetings')}
+          class="px-7 py-3 bg-gold-500 text-primary-900 rounded-lg font-semibold hover:bg-gold-400 transition-colors"
+        >
+          Join a Meeting
+        </a>
+        <a
+          href={url('/about')}
+          class="px-7 py-3 bg-transparent border-2 border-primary-400 text-white rounded-lg font-semibold hover:border-gold-400 hover:text-gold-300 transition-colors"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Meeting + About blurb -->
+  <section class="max-w-6xl mx-auto px-4 py-14 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+      <NextMeeting />
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-primary-900 mb-4">About Us</h2>
+        <p class="text-primary-700 mb-4 leading-relaxed">
+          The Pittsburgh Recorder Society is a chapter of the
+          <a href="https://americanrecorder.org" class="text-teal-700 hover:text-teal-500 underline decoration-teal-300 underline-offset-2" target="_blank" rel="noopener noreferrer">American Recorder Society</a>,
+          bringing recorder players of all levels together for monthly meetings,
+          ensemble playing, and musical fellowship.
+        </p>
+        <p class="text-primary-700 mb-6 leading-relaxed">
+          Whether you're a seasoned player or just picking up the recorder for the first
+          time, you're welcome to join us. We provide beginner coaching at every meeting
+          and have music suitable for all skill levels.
+        </p>
+        <a
+          href={url('/about')}
+          class="text-teal-700 font-medium hover:text-teal-500 transition-colors"
+        >
+          More about us &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  {blogPosts.length > 0 && (
+    <section class="bg-white py-14 md:py-20">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <h2 class="font-heading text-2xl font-bold text-primary-900">Latest News</h2>
+          <span class="flex-1 h-px bg-gradient-to-r from-gold-300 to-transparent"></span>
+        </div>
+        <div class="space-y-6">
+          {blogPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              date={post.data.date}
+              description={post.data.description}
+              slug={post.id}
+            />
+          ))}
+        </div>
+        <a
+          href={url('/blog')}
+          class="inline-block mt-8 text-teal-700 font-medium hover:text-teal-500 transition-colors"
+        >
+          All news &rarr;
+        </a>
+      </div>
+    </section>
+  )}
+</BaseLayout>

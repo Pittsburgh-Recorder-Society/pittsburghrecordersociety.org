@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../utils/url';
+import leadership from '../data/leadership.json';
+---
+
+<BaseLayout title="About" description="Learn about the Pittsburgh Recorder Society — our mission, history, and leadership.">
+  <section class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <h1 class="font-heading text-4xl font-bold text-primary-900 mb-2">About Us</h1>
+    <div class="h-px w-24 bg-gold-400 mb-10"></div>
+
+    <!-- Mission -->
+    <div class="mb-12">
+      <h2 class="font-heading text-2xl font-bold text-primary-900 mb-4">Our Mission</h2>
+      <p class="text-primary-700 mb-4 leading-relaxed">
+        The Pittsburgh Recorder Society is a perfect place for recorder players of all
+        levels to play consort music. We welcome players from across western Pennsylvania
+        and explore music spanning medieval to modern.
+      </p>
+      <p class="text-primary-700 leading-relaxed">
+        We are a chapter of the
+        <a href="https://americanrecorder.org" class="text-teal-700 hover:text-teal-500 underline decoration-teal-300 underline-offset-2" target="_blank" rel="noopener noreferrer">American Recorder Society</a>
+        (ARS), the membership organization for recorder players in the United States.
+      </p>
+    </div>
+
+    <!-- History -->
+    <div class="mb-12">
+      <h2 class="font-heading text-2xl font-bold text-primary-900 mb-4">History</h2>
+      <p class="text-primary-700 mb-4 leading-relaxed">
+        The Pittsburgh Recorder Society has been active since the 1960s, bringing together
+        recorder enthusiasts from across the greater Pittsburgh area. Over the decades,
+        we've grown from a small gathering of players into a vibrant community that meets
+        monthly throughout the playing season.
+      </p>
+      <p class="text-primary-700 leading-relaxed">
+        Our motto, <em class="text-teal-800">"Pastime with good company,"</em> comes from a song attributed to
+        Henry VIII — a fitting expression of the spirit of community and shared musical
+        enjoyment that defines our group.
+      </p>
+    </div>
+
+    <!-- What We Do -->
+    <div class="mb-12">
+      <h2 class="font-heading text-2xl font-bold text-primary-900 mb-4">What We Do</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg p-5 border border-primary-200">
+          <h3 class="font-heading font-bold text-primary-900 mb-2">Monthly Meetings</h3>
+          <p class="text-sm text-primary-700 leading-relaxed">
+            We meet on the 3rd Sunday of each month from September through May for ensemble playing and musical fellowship.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg p-5 border border-primary-200">
+          <h3 class="font-heading font-bold text-primary-900 mb-2">Beginner Coaching</h3>
+          <p class="text-sm text-primary-700 leading-relaxed">
+            Every meeting includes a dedicated hour of coaching for newer players with Music Director Fred Moyes.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg p-5 border border-primary-200">
+          <h3 class="font-heading font-bold text-primary-900 mb-2">Group Playing</h3>
+          <p class="text-sm text-primary-700 leading-relaxed">
+            We play a wide range of music from medieval through contemporary, in ensembles from duets to large consorts.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg p-5 border border-primary-200">
+          <h3 class="font-heading font-bold text-primary-900 mb-2">Special Events</h3>
+          <p class="text-sm text-primary-700 leading-relaxed">
+            Occasional workshops, play days, and performances throughout the season.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Membership -->
+    <div class="mb-12">
+      <h2 class="font-heading text-2xl font-bold text-primary-900 mb-4">Membership</h2>
+      <div class="bg-white border-2 border-gold-300 rounded-xl p-6">
+        <p class="text-primary-700 mb-4 leading-relaxed">
+          Annual dues are <strong class="text-primary-900">$30</strong> (or <strong class="text-primary-900">$20</strong> for students).
+          Visitors are always welcome to attend a meeting before deciding to join.
+        </p>
+        <p class="text-primary-700 leading-relaxed">
+          To join or renew your membership, come to any meeting or
+          <a href={url('/contact')} class="text-teal-700 hover:text-teal-500 underline decoration-teal-300 underline-offset-2">contact us</a> for details.
+        </p>
+      </div>
+    </div>
+
+    <!-- Leadership -->
+    <div>
+      <h2 class="font-heading text-2xl font-bold text-primary-900 mb-4">Leadership</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {leadership.map((person) => (
+          <div class="bg-white rounded-lg p-4 border border-primary-200">
+            <p class="font-semibold text-primary-900">{person.name}</p>
+            <p class="text-sm text-primary-500">{person.role}</p>
+            {person.bio && <p class="text-sm text-primary-600 mt-1">{person.bio}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

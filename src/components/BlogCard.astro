@@ -1,0 +1,35 @@
+---
+import { url } from '../utils/url';
+
+interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  slug: string;
+}
+
+const { title, date, description, slug } = Astro.props;
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="border-b border-primary-200 pb-6 last:border-b-0">
+  <time class="text-sm text-primary-500" datetime={date.toISOString()}>
+    {formattedDate}
+  </time>
+  <h3 class="font-heading text-xl font-bold text-primary-900 mt-1 mb-2">
+    <a href={url(`/blog/${slug}`)} class="hover:text-teal-700 transition-colors">
+      {title}
+    </a>
+  </h3>
+  <p class="text-primary-700">{description}</p>
+  <a
+    href={url(`/blog/${slug}`)}
+    class="inline-block mt-2 text-sm font-medium text-teal-700 hover:text-teal-500 transition-colors"
+  >
+    Read more &rarr;
+  </a>
+</article>

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Helen Thornton",
+    "role": "President",
+    "bio": "Helen hosts our Saturday sessions at her home in Allison Park and coordinates all society activities."
+  },
+  {
+    "name": "Fred Moyes",
+    "role": "Music Director",
+    "bio": "Fred leads beginner and refresher coaching at our Sunday meetings in the chapel."
+  },
+  {
+    "name": "Mike Domain",
+    "role": "Technique Instructor",
+    "bio": "Mike teaches technique classes at our Sunday meetings in the parlor."
+  }
+]
