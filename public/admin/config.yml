@@ -1,0 +1,52 @@
+# Decap CMS configuration
+# Docs: https://decapcms.org/docs/configuration-options/
+
+# For local development: run `npm run dev:cms` in a second terminal
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+  # TODO: Replace with DecapBridge URLs after account setup at https://decapbridge.com
+  # identity_url: https://auth.decapbridge.com/sites/YOUR-SITE-ID
+  # gateway_url: https://gateway.decapbridge.com
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: src/content/blog
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime,
+          date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - { label: Description, name: description, widget: text,
+          hint: "Short summary shown on listing pages and in search results." }
+      - { label: Author, name: author, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: events
+    label: Events
+    folder: src/content/events
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Event Date, name: date, widget: datetime,
+          date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - { label: End Date, name: endDate, widget: datetime,
+          date_format: YYYY-MM-DD, time_format: false, picker_utc: true,
+          required: false, hint: "Only needed for multi-day events." }
+      - { label: Location, name: location, widget: string, required: false,
+          default: "First United Methodist Church, 5401 Centre Avenue, Pittsburgh, PA 15232" }
+      - { label: Description, name: description, widget: text,
+          hint: "Short summary shown on listing pages." }
+      - { label: Body, name: body, widget: markdown }

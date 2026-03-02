@@ -1,0 +1,24 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await event.render();
+---
+
+<PostLayout title={event.data.title} description={event.data.description} date={event.data.date}>
+  {event.data.location && (
+    <p class="text-primary-600 mb-6 not-prose">
+      <strong>Location:</strong> {event.data.location}
+    </p>
+  )}
+  <Content />
+</PostLayout>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with the Pittsburgh Recorder Society.">
+  <section class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <h1 class="font-heading text-4xl font-bold text-primary-900 mb-2">Contact Us</h1>
+    <div class="h-px w-24 bg-gold-400 mb-10"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="font-heading text-xl font-bold text-primary-900 mb-3">Email</h2>
+          <p class="text-primary-700">
+            <a
+              href="mailto:pittsburghrecordersociety@gmail.com"
+              class="text-teal-700 hover:text-teal-500 underline decoration-teal-300 underline-offset-2"
+            >
+              pittsburghrecordersociety@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-primary-900 mb-3">Facebook</h2>
+          <p class="text-primary-700 leading-relaxed">
+            Follow us on
+            <a
+              href="https://www.facebook.com/PittsburghRecorderSociety"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-teal-700 hover:text-teal-500 underline decoration-teal-300 underline-offset-2"
+            >
+              Facebook
+            </a>
+            for the latest updates, event announcements, and photos from meetings.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-primary-900 mb-3">Visit Us</h2>
+          <p class="text-primary-700 mb-2 leading-relaxed">
+            The best way to learn about us is to come to a meeting!
+          </p>
+          <p class="text-primary-700 leading-relaxed">
+            We meet on the <strong>3rd Sunday</strong> of each month, September through May,
+            at <strong>First United Methodist Church</strong>, 5401 Centre Avenue, Pittsburgh, PA 15232.
+          </p>
+          <a
+            href="/meetings"
+            class="inline-block mt-3 text-teal-700 font-medium hover:text-teal-500 transition-colors"
+          >
+            Meeting details &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div>
+        <h2 class="font-heading text-xl font-bold text-primary-900 mb-3">Meeting Location</h2>
+        <div class="rounded-lg overflow-hidden border border-primary-200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.5!2d-79.9319!3d40.4527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f22c42a6e5b7%3A0x8e4a6d8e1a7c9e0!2s5401+Centre+Ave%2C+Pittsburgh%2C+PA+15232!5e0!3m2!1sen!2sus!4v1700000000000"
+            width="100%"
+            height="350"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing First United Methodist Church location"
+          ></iframe>
+        </div>
+        <p class="text-sm text-primary-500 mt-2">
+          First United Methodist Church, 5401 Centre Avenue, Pittsburgh, PA 15232
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

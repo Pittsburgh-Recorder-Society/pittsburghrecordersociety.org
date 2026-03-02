@@ -1,0 +1,65 @@
+---
+/**
+ * Calculates the next 3rd Sunday meeting date (Sep–May).
+ */
+function getNextMeeting(): Date {
+  const now = new Date();
+  let year = now.getFullYear();
+  let month = now.getMonth(); // 0-indexed
+
+  for (let i = 0; i < 12; i++) {
+    const checkMonth = (month + i) % 12;
+    const checkYear = year + Math.floor((month + i) / 12);
+
+    // Meetings are Sep (8) through May (4)
+    const isMeetingMonth = checkMonth >= 8 || checkMonth <= 4;
+    if (!isMeetingMonth) continue;
+
+    // Find the 3rd Sunday of this month
+    const firstDay = new Date(checkYear, checkMonth, 1);
+    const firstSunday = (7 - firstDay.getDay()) % 7 + 1;
+    const thirdSunday = firstSunday + 14;
+    const meetingDate = new Date(checkYear, checkMonth, thirdSunday, 14, 0);
+
+    if (meetingDate > now) {
+      return meetingDate;
+    }
+  }
+  return new Date();
+}
+
+const nextMeeting = getNextMeeting();
+const formattedDate = nextMeeting.toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<section class="bg-white border-2 border-gold-300 rounded-xl p-6 md:p-8 shadow-sm">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="text-gold-500 text-2xl" aria-hidden="true">&#9835;</span>
+    <h2 class="font-heading text-2xl font-bold text-primary-900">Next Meeting</h2>
+  </div>
+  <div class="space-y-2">
+    <p class="text-lg font-semibold text-teal-800">{formattedDate}</p>
+    <p class="text-primary-700">
+      <strong>2:00 – 5:00 PM</strong>
+    </p>
+    <p class="text-primary-700">
+      First United Methodist Church<br />
+      5401 Centre Avenue, Pittsburgh, PA 15232
+    </p>
+    <div class="mt-4 pt-3 border-t border-gold-200 text-sm text-primary-600 space-y-1">
+      <p>2:00 – 3:00 PM — Beginner coaching</p>
+      <p>3:00 – 5:00 PM — Group playing (all levels)</p>
+    </div>
+  </div>
+  <a
+    href="/meetings"
+    class="inline-block mt-5 px-5 py-2.5 bg-teal-700 text-white rounded-lg font-medium hover:bg-teal-600 transition-colors"
+  >
+    Meeting Details
+  </a>
+</section>

@@ -1,0 +1,109 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/meetings', label: 'Meetings' },
+  { href: '/events', label: 'Events' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/blog', label: 'News' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-primary-900 text-white">
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <!-- Bridge + note logo mark (placeholder until official logo) -->
+      <svg class="w-12 h-9 text-gold-400 transition-transform group-hover:scale-105 shrink-0" viewBox="0 0 80 56" fill="none" aria-hidden="true">
+        <path d="M4 48 Q20 12 40 12 Q60 12 76 48" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        <line x1="0" y1="48" x2="80" y2="48" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        <line x1="20" y1="28" x2="20" y2="48" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
+        <line x1="32" y1="18" x2="32" y2="48" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
+        <line x1="48" y1="18" x2="48" y2="48" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
+        <line x1="60" y1="28" x2="60" y2="48" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
+        <ellipse cx="42" cy="6" rx="4.5" ry="3.5" fill="currentColor" transform="rotate(-15 42 6)" />
+        <line x1="46" y1="5" x2="46" y2="-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <path d="M0 54 Q10 51 20 54 Q30 57 40 54 Q50 51 60 54 Q70 57 80 54" stroke="currentColor" stroke-width="1.2" opacity="0.3" />
+      </svg>
+      <div>
+        <div class="font-heading text-lg font-bold leading-tight tracking-wide">Pittsburgh</div>
+        <div class="font-heading text-lg font-bold leading-tight tracking-wide">Recorder Society</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex gap-1">
+      {navLinks.map(({ href, label }) => {
+        const isActive = href === '/'
+          ? currentPath === '/'
+          : currentPath.startsWith(href);
+        return (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'px-3 py-2 rounded text-sm font-medium tracking-wide transition-colors',
+                isActive
+                  ? 'bg-primary-700 text-gold-300'
+                  : 'text-primary-200 hover:text-gold-300 hover:bg-primary-800',
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 rounded hover:bg-primary-800 transition-colors"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-primary-700">
+    <ul class="px-4 py-2 space-y-1">
+      {navLinks.map(({ href, label }) => {
+        const isActive = href === '/'
+          ? currentPath === '/'
+          : currentPath.startsWith(href);
+        return (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'block px-3 py-2 rounded text-sm font-medium transition-colors',
+                isActive
+                  ? 'bg-primary-700 text-gold-300'
+                  : 'text-primary-200 hover:text-gold-300 hover:bg-primary-800',
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+  <div class="h-1 bg-gradient-to-r from-gold-500 via-teal-600 to-gold-500"></div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+</script>

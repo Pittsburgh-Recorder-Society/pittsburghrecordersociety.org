@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#2c2420" />
+  <!-- Bridge arch -->
+  <path d="M8 46 Q20 18 32 18 Q44 18 56 46" stroke="#c4923a" stroke-width="3" stroke-linecap="round" fill="none" />
+  <!-- Bridge deck -->
+  <line x1="4" y1="46" x2="60" y2="46" stroke="#c4923a" stroke-width="2.5" stroke-linecap="round" />
+  <!-- Cables -->
+  <line x1="18" y1="32" x2="18" y2="46" stroke="#c4923a" stroke-width="1.5" opacity="0.5" />
+  <line x1="32" y1="22" x2="32" y2="46" stroke="#c4923a" stroke-width="1.5" opacity="0.5" />
+  <line x1="46" y1="32" x2="46" y2="46" stroke="#c4923a" stroke-width="1.5" opacity="0.5" />
+  <!-- Musical note on the arch -->
+  <ellipse cx="34" cy="12" rx="4" ry="3" fill="#c4923a" transform="rotate(-15 34 12)" />
+  <line x1="37.5" y1="11" x2="37.5" y2="0" stroke="#c4923a" stroke-width="2" stroke-linecap="round" />
+  <!-- River wave -->
+  <path d="M4 52 Q16 49 28 52 Q40 55 52 52 Q58 50.5 60 52" stroke="#c4923a" stroke-width="1" opacity="0.3" fill="none" />
+</svg>
